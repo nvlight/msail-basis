@@ -26,7 +26,7 @@ sudo apt update</code>
 Нужно сделать ключ приложения
 <pre><code>sail artisan key:generate</code></pre>
 
-#### Проблемы с postgreSql Зайти в psql как postgres
+#### Проблемы с postgreSql - решение
 Некоторые из команд, которые инициализируют postgresql могут не отрабатывать нормально, поэтому <br>
 захожу в сервис pgsql:
 
@@ -54,3 +54,5 @@ GRANT ALL PRIVILEGES ON DATABASE your_database TO sail;
 
 Во втором, чтобы запустить тесты, выполнить команду:
 <pre><code>npm run test:unit</code></pre>
+
+#### Теперь все готово, можно начинать делать свой крутой проект!
