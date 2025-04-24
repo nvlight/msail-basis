@@ -16,41 +16,41 @@ sudo add-apt-repository ppa:ondrej/php
 sudo apt update</code>
 </pre>
 
-Далее нужно установить зависимости:
+Перехожу в папку с проектом. Установить зависимости:
 <pre><code>composer install</code></pre>
 
 Для запуска sail в папке с проектом выполнить:
 <pre><code>sail up -d</code></pre>
 
-### laravel 12
+### laravel framework 12
 Нужно сделать ключ приложения
 <pre><code>sail artisan key:generate</code></pre>
 
-#### Зайти в psql как postgres
-docker exec -it <pgsql-container-name> psql -U postgres -d laravel
+#### Проблемы с postgreSql Зайти в psql как postgres
+Некоторые из команд, которые инициализируют postgresql могут не отрабатывать нормально, поэтому <br>
+захожу в сервис pgsql:
 
-#### Выполнить SQL:
-CREATE USER sail WITH PASSWORD 'secret'; # sail уже есть, круто да?!
+<pre><code>docker exec -it <pgsql-container-name> your_container_name_or_id -U postgres -d laravel
+</code></pre>
+
+Выполняю команды одну за другим, ищу тех, которые не отработали <br>
+<pre><code>CREATE USER sail WITH PASSWORD 'secret'; # sail уже есть ? выполните строки ниже 
 CREATE DATABASE your_database OWNER sail;
 GRANT ALL PRIVILEGES ON DATABASE your_database TO sail;
-\q
+</code></pre>
 
-Нужно выполнить миграции:
+Теперь доступ в бд восстановлен, выполнить миграции:
 <pre><code>sail artisan migrate</code></pre>
 
 Запустить тесты:
 <pre><code>sail artisan test</code></pre>
 
-### quasar framework
+### quasar framework 2.18
 Его нужно запустить отдельно, примерная команда имеет вид:
 <pre><code>docker exec -it 593c571c890fc22c3b202ae5f83e3ea5083c21bb9af55ee108a34e20b7e7d861 sh</code></pre>
-Вместо id моего сервиса нужно прописать тот, который у вас сформировался. <br>
 
 Нужно 2 раза подключиться к терминалу, в первом нужно запустить сам quasar:
 <pre><code>npm run dev</code></pre>
 
 Во втором, чтобы запустить тесты, выполнить команду:
 <pre><code>npm run test:unit</code></pre>
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). Again
-# msail-basis
