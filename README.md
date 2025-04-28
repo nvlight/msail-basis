@@ -19,24 +19,37 @@ sudo apt update</code>
 Перехожу в папку с проектом. Установить зависимости:
 <pre><code>composer install</code></pre>
 
+Скопировать .env.example в .env, и заменить значения переменных:
+<pre><code>DB_DATABASE=laravel
+DB_USERNAME=sail
+DB_PASSWORD=password</code></pre>
+
 Для запуска sail в папке с проектом выполнить:
 <pre><code>sail up -d</code></pre>
+
+При необходимости нужно поменять порты так, чтобы не было конфликтов в .env:
+<pre><code># Docker ports
+APP_PORT=8010
+FORWARD_DB_PORT=54410
+FORWARD_REDIS_PORT=63810
+QUASAR_PORT=9010
+QUASAR_NODE=3410</code></pre>
 
 ### laravel framework 12
 Нужно сделать ключ приложения
 <pre><code>sail artisan key:generate</code></pre>
 
 #### Проблемы с postgreSql - решение
-Некоторые из команд, которые инициализируют postgresql могут не отрабатывать нормально, поэтому <br>
+Некоторые из команд, которые инициализируют postgresql не отрабатывают нормально, поэтому
 захожу в сервис pgsql:
 
-<pre><code>docker exec -it <pgsql-container-name> your_container_name_or_id -U postgres -d laravel
+<pre><code>docker exec -it 90a827f284f8ee0b4722bc4dc3284d27f845bfd5852034d3fb908726edd0e3a9 psql -U postgres
 </code></pre>
 
 Выполняю команды одну за другим, ищу тех, которые не отработали <br>
-<pre><code>CREATE USER sail WITH PASSWORD 'secret'; # sail уже есть ? выполните строки ниже 
-CREATE DATABASE your_database OWNER sail;
-GRANT ALL PRIVILEGES ON DATABASE your_database TO sail;
+<pre><code>CREATE USER sail WITH PASSWORD 'password'; # sail уже есть ? выполните строки ниже 
+CREATE DATABASE laravel OWNER sail;
+GRANT ALL PRIVILEGES ON DATABASE laravel TO sail;
 </code></pre>
 
 Теперь доступ в бд восстановлен, выполнить миграции:
