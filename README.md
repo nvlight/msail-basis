@@ -24,9 +24,6 @@ sudo apt update</code>
 DB_USERNAME=sail
 DB_PASSWORD=password</code></pre>
 
-Для запуска sail в папке с проектом выполнить:
-<pre><code>sail up -d</code></pre>
-
 При необходимости нужно поменять порты так, чтобы не было конфликтов в .env:
 <pre><code># Docker ports
 APP_PORT=8010
@@ -34,6 +31,9 @@ FORWARD_DB_PORT=54410
 FORWARD_REDIS_PORT=63810
 QUASAR_PORT=9010
 QUASAR_NODE=3410</code></pre>
+
+Для запуска sail в папке с проектом выполнить:
+<pre><code>sail up -d</code></pre>
 
 ### laravel framework 12
 Нужно сделать ключ приложения
@@ -55,7 +55,8 @@ GRANT ALL PRIVILEGES ON DATABASE laravel TO sail;
 Теперь доступ в бд восстановлен, выполнить миграции:
 <pre><code>sail artisan migrate</code></pre>
 
-Запустить тесты:
+Создаю папку **tests/Unit** <br>
+запускаю тесты бекэнда:
 <pre><code>sail artisan test</code></pre>
 
 ### quasar framework 2.18
