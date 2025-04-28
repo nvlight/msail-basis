@@ -74,7 +74,7 @@ services:
             #- /usr/src/app/node_modules
         working_dir: /usr/src/app
         #command: sh -c "npm run dev"
-        command: ["node", "-e", "console.log('Node 22 is running'); setInterval(() => {}, 1000);"]
+        command: ["node", "-e", "console.log('Node 22 is running'); setInterval(() => {}, 1000); "]
         depends_on:
             - laravel.test
         networks:
