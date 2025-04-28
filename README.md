@@ -48,13 +48,18 @@ QUASAR_NODE=3410</code></pre>
 <pre><code>sail artisan test</code></pre>
 
 ### quasar framework 2.18
-Его нужно запустить отдельно, примерная команда имеет вид:
+Поключаюсь к сервису контейнера, примерная команда имеет вид:
 <pre><code>docker exec -it 593c571c890fc22c3b202ae5f83e3ea5083c21bb9af55ee108a34e20b7e7d861 sh</code></pre>
 
-Нужно 2 раза подключиться к терминалу, в первом нужно запустить сам quasar:
+Устанавливаю зависимости
+<pre><code>npm i</code></pre>
+
+Запускаю quasar framework
 <pre><code>npm run dev</code></pre>
 
-Во втором, чтобы запустить тесты, выполнить команду:
-<pre><code>npm run test:unit</code></pre>
+Еще 1 раз подключаюсь к терминалу и выполняю тесты:
+<pre><code>docker exec -it 593c571c890fc22c3b202ae5f83e3ea5083c21bb9af55ee108a34e20b7e7d861 sh
+npm run test:unit</code></pre>
+
 
 #### Теперь все готово, можно начинать делать свой крутой проект!
