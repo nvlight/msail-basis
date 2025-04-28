@@ -39,23 +39,11 @@ QUASAR_NODE=3410</code></pre>
 Нужно сделать ключ приложения
 <pre><code>sail artisan key:generate</code></pre>
 
-#### Проблемы с postgreSql - решение
-Некоторые из команд, которые инициализируют postgresql не отрабатывают нормально, поэтому
-захожу в сервис pgsql:
-
-<pre><code>docker exec -it 90a827f284f8ee0b4722bc4dc3284d27f845bfd5852034d3fb908726edd0e3a9 psql -U postgres
-</code></pre>
-
-Выполняю команды одну за другим, ищу тех, которые не отработали <br>
-<pre><code>CREATE USER sail WITH PASSWORD 'password'; # sail уже есть ? выполните строки ниже 
-CREATE DATABASE laravel OWNER sail;
-GRANT ALL PRIVILEGES ON DATABASE laravel TO sail;
-</code></pre>
-
-Теперь доступ в бд восстановлен, выполнить миграции:
+выполнить миграции:
 <pre><code>sail artisan migrate</code></pre>
 
-Создаю папку **tests/Unit** <br>
+Создаю папку **tests/Unit**, без него будет ошибка <br>
+
 запускаю тесты бекэнда:
 <pre><code>sail artisan test</code></pre>
 
