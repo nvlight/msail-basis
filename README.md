@@ -61,5 +61,11 @@ QUASAR_NODE=3410</code></pre>
 <pre><code>docker exec -it 593c571c890fc22c3b202ae5f83e3ea5083c21bb9af55ee108a34e20b7e7d861 sh
 npm run test:unit</code></pre>
 
+В данный момент приходится вручную запускать из контейнера сервис с quasar framework. 
+Для исправления иду в docker-compose.yml в корне проект: <br>
+раскомментирую строку
+<pre><code>#command: sh -c "npm run dev"</code></pre>
+закомментирую строку
+<pre><code>command: ["node", "-e", "console.log('Node 22 is running'); setInterval(() => {}, 1000); "]</code></pre>
 
 #### Теперь все готово, можно начинать делать свой крутой проект!
