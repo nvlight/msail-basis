@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print current date and time
-        run: echo "Current date and time: $(date)"
+        run: echo "Running job2 on ${{ inputs.environment }}"
 
   job3-fail:
     runs-on: ubuntu-latest
