@@ -14,20 +14,9 @@ on:
           - prod
 
 jobs:
-  job1-print:
+  run:
     runs-on: ubuntu-latest
+
     steps:
       - name: Print environment
-        run: echo "Running job1 on ${{ inputs.environment }}"
-
-  job2-date:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print current date and time
-        run: echo "Current date and time: $(date)"
-
-  job3-fail:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Force failure
-        run: exit 1
+        run: echo "Running on ${{ inputs.environment }}"
