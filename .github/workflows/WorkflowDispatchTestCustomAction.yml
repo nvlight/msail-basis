@@ -1,4 +1,4 @@
-name: Manual Workflow 003 With Artifact
+name: Manual workflow with custom action
 
 on:
   workflow_dispatch:
