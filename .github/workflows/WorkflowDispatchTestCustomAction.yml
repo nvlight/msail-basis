@@ -24,4 +24,4 @@ jobs:
         uses: ./.github/actions/hello-action
         with:
           name: 'Developer'
-          file-to-check: 'package.json'
+          file-to-check: 'composer.json'
